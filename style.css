@@ -1,4 +1,3 @@
-/* Copy ALL the CSS from your <style> tags here */
 /* Global Styles */
 * {
     margin: 0;
@@ -13,4 +12,484 @@ body {
     line-height: 1.6;
 }
 
-/* ... and all the rest of your CSS */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #ff3366, #ff9933);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 51, 102, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #ff3366;
+    color: #ff3366;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 51, 102, 0.1);
+}
+
+/* Improved Font Stack for Mobile Compatibility */
+.old-english {
+    font-family: 'Old English Text MT', 'Engravers MT', 'Goudy Old Style', 'Palatino', 'Times New Roman', serif;
+    font-weight: normal;
+}
+
+/* Password Screen Styles */
+#password-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    text-align: center;
+    padding: 20px;
+}
+
+#password-screen .logo-container {
+    margin-bottom: 20px;
+}
+
+#password-screen .logo-container img {
+    max-width: 200px;
+    height: auto;
+}
+
+#password-screen h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff3366, #ff9933);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Old English Text MT', 'Engravers MT', 'Goudy Old Style', 'Palatino', 'Times New Roman', serif;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+#password-screen p {
+    font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size */
+    margin-bottom: 30px;
+    max-width: 600px;
+    font-family: 'Old English Text MT', 'Engravers MT', 'Goudy Old Style', 'Palatino', 'Times New Roman', serif;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.password-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 400px;
+}
+
+.password-form h2 {
+    margin-bottom: 20px;
+    color: #ff9933;
+    font-size: 1.5rem;
+}
+
+.password-form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    color: #333;
+}
+
+.password-form .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Landing Page Styles */
+#landing-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+}
+
+header {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(10, 10, 10, 0.9);
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: clamp(1.5rem, 4vw, 1.8rem); /* Responsive font size */
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff3366, #ff9933);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Responsive font size */
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff3366, #ff9933);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size */
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 450px;
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff9933;
+    font-size: 1.5rem;
+}
+
+.ticket-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 50px 0;
+    border-radius: 15px;
+    margin: 50px auto;
+    max-width: 1000px;
+}
+
+.ticket-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive font size */
+    color: #ff9933;
+}
+
+.ticket-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.ticket-tier {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.tier-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff3366;
+}
+
+.tier-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tier-dates {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.ticket-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.terms-group {
+    display: flex;
+    align-items: flex-start;
+    margin: 25px 0;
+}
+
+.terms-group input {
+    width: auto;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.terms-group label {
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.terms-link {
+    color: #ff9933;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.referral-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.referral-note {
+    font-size: 0.9rem;
+    color: #ff9933;
+    margin-top: 5px;
+}
+
+.newsletter-section {
+    text-align: center;
+    padding: 50px 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter-section h2 {
+    margin-bottom: 20px;
+    color: #ff9933;
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
+}
+
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    color: #333;
+}
+
+.instagram-competition {
+    text-align: center;
+    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+.instagram-competition h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
+    margin-bottom: 20px;
+    color: #ff9933;
+}
+
+.competition-prize {
+    color: #ff9933;
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    color: #ccc;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #1a1a2e;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    color: #ff9933;
+}
+
+.modal p {
+    margin-bottom: 20px;
+}
+
+.terms-content {
+    max-height: 400px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* Webtickets Integration Styles */
+.webtickets-redirect {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.webtickets-info {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.webtickets-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .video-placeholder {
+        height: 300px;
+        font-size: 1.2rem;
+    }
+    
+    .ticket-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ticket-tier {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .password-form {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    #password-screen h1 {
+        font-size: 2.2rem;
+    }
+    
+    #password-screen p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .ticket-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .password-form {
+        padding: 15px;
+    }
+    
+    #password-screen h1 {
+        font-size: 1.8rem;
+    }
+    
+    #password-screen p {
+        font-size: 1rem;
+    }
+}
