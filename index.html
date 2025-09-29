@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pallas' Playground - Student Music Event</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ff3366, #ff9933);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #ff3366;
+            color: #ff3366;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 51, 102, 0.1);
+        }
+
+        /* Old English Font */
+        .old-english {
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+        }
+
+        /* Password Screen Styles */
+        #password-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #password-screen .logo-container {
+            margin-bottom: 20px;
+        }
+        
+        #password-screen .logo-container img {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        #password-screen h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff3366, #ff9933);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+        }
+        
+        #password-screen p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+        }
+        
+        .password-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .password-form h2 {
+            margin-bottom: 20px;
+            color: #ff9933;
+        }
+        
+        .password-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .password-form .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Landing Page Styles */
+        #landing-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        }
+        
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.9);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff3366, #ff9933);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff3366, #ff9933);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 450px;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ff9933;
+            font-size: 1.5rem;
+        }
+        
+        .ticket-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px 0;
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 1000px;
+        }
+        
+        .ticket-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #ff9933;
+        }
+        
+        .ticket-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .ticket-tier {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+        
+        .tier-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff3366;
+        }
+        
+        .tier-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .tier-dates {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .ticket-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .terms-group {
+            display: flex;
+            align-items: flex-start;
+            margin: 25px 0;
+        }
+
+        .terms-group input {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .terms-group label {
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .terms-link {
+            color: #ff9933;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .referral-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .referral-note {
+            font-size: 0.9rem;
+            color: #ff9933;
+            margin-top: 5px;
+        }
+        
+        .newsletter-section {
+            text-align: center;
+            padding: 50px 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-section h2 {
+            margin-bottom: 20px;
+            color: #ff9933;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            color: #333;
+        }
+
+        .instagram-competition {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 800px;
+        }
+
+        .competition-prize {
+            color: #ff9933;
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+            color: #ccc;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: #1a1a2e;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .modal h2 {
+            margin-bottom: 20px;
+            color: #ff9933;
+        }
+        
+        .modal p {
+            margin-bottom: 20px;
+        }
+
+        .terms-content {
+            max-height: 400px;
+            overflow-y: auto;
+            text-align: left;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* Webtickets Integration Styles */
+        .webtickets-redirect {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .webtickets-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .webtickets-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .video-placeholder {
+                height: 300px;
+            }
+            
+            .ticket-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .ticket-tier {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Password Screen -->
+    <section id="password-screen">
+        <div class="container">
+            <div class="logo-container">
+                <img src="logopallas.png" alt="Pallas' Playground Logo">
+            </div>
+            <h1 class="old-english">pallas' playground presents to you</h1>
+            <p class="old-english">Come Outside For The One Last Jam</p>
+            <div class="password-form">
+                <h2>Enter Password</h2>
+                <input type="password" id="event-password" placeholder="Enter event password">
+                <button class="btn" id="submit-password">Enter Event Site</button>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #ff9933;">
+                    Hint: The password is "hiphop"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Page (Hidden Initially) -->
+    <section id="landing-page" class="hidden">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">pallas' playground</div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <div class="container">
+                <h1>The Ultimate Student Music Experience</h1>
+                <p>Join us on October 13th for the last major student show before exams. Featuring the artists you walk past every single day, this is your chance to connect, celebrate, and create memorable moments.</p>
+                
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <p>Event Promo Video Will Play Here</p>
+                    </div>
+                </div>
+                
+                <a href="#tickets" class="btn">Get Your Tickets Now</a>
+            </div>
+        </section>
+        
+        <section class="ticket-section" id="tickets">
+            <div class="container">
+                <h2>Get Your Tickets</h2>
+                
+                <div class="ticket-info">
+                    <div class="ticket-tier">
+                        <div class="tier-name">Early Bird</div>
+                        <div class="tier-price">R30</div>
+                        <div class="tier-dates">29th Sept - 4th Oct</div>
+                    </div>
+                    <div class="ticket-tier">
+                        <div class="tier-name">General</div>
+                        <div class="tier-price">R50</div>
+                        <div class="tier-dates">5th Oct - 10th Oct</div>
+                    </div>
+                    <div class="ticket-tier">
+                        <div class="tier-name">Day of the event</div>
+                        <div class="tier-price">R70</div>
+                        <div class="tier-dates">Event : Oct 11th</div>
+                    </div>
+                </div>
+                
+                <!-- Webtickets Integration -->
+                <div class="webtickets-info">
+                    <h3>Secure Ticket Purchase via Webtickets</h3>
+                    <p>We've partnered with Webtickets, South Africa's most trusted ticketing platform, for secure and reliable ticket processing.</p>
+                    
+                    <div class="webtickets-features">
+                        <div class="feature-item">
+                            <h4>🔒 Secure Payments</h4>
+                            <p>Bank-level security for all transactions</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>📧 Instant Confirmations</h4>
+                            <p>Email & SMS tickets immediately</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>📱 Mobile QR Codes</h4>
+                            <p>Easy entry with digital tickets</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🔄 Easy Refunds</h4>
+                            <p>Simple refund process if needed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ticket-form">
+                    <div class="webtickets-redirect">
+                        <button class="btn" id="purchase-ticket-webtickets" style="font-size: 1.2rem; padding: 15px 40px;">
+                            🎫 Purchase Tickets on Webtickets
+                        </button>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #ccc;">
+                            You'll be redirected to Webtickets.co.za for secure payment processing
+                        </p>
+                    </div>
+
+                    <div class="referral-section">
+                        <h4>Support Your Favorite Artist</h4>
+                        <p>When purchasing on Webtickets, mention the artist who referred you in the notes section to support them!</p>
+                        <p class="referral-note">Artists receive bonuses based on referrals - help them earn more!</p>
+                    </div>
+
+                    <div class="terms-group">
+                        <input type="checkbox" id="agree-terms">
+                        <label for="agree-terms">I agree to the <span class="terms-link" id="show-terms">Terms and Conditions</span></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="instagram-competition">
+            <div class="container">
+                <h2>Instagram Competition</h2>
+                <p>Share that you're attending on Instagram for a chance to win!</p>
+                <div class="competition-prize">🏆 Prize: 3 Tickets for You + 2 Friends!</div>
+                <p>Tag @pallasplayground in your story or post to automatically enter</p>
+                <p>Winner announced October 10th</p>
+            </div>
+        </section>
+        
+        <section class="newsletter-section">
+            <div class="container">
+                <h2>Stay Updated</h2>
+                <p>Enter your details to receive updates about the event via WhatsApp and email</p>
+                
+                <div class="newsletter-form">
+                    <input type="text" id="update-name" placeholder="Your Name">
+                    <input type="tel" id="update-phone" placeholder="Phone (WhatsApp)">
+                    <button class="btn" id="subscribe-updates">Subscribe for Updates</button>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>pallas' playground - October 11th, 2023 | 17:00 - 21:30</p>
+                <p>Contact: pallasplayground@gmail.com</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Ticketing powered by Webtickets</p>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal" id="terms-modal">
+        <div class="modal-content">
+            <h2>Terms and Conditions</h2>
+            <div class="terms-content">
+                <h3>Ticket Purchase Terms</h3>
+                <p>1. All ticket sales are final except in case of event cancellation.</p>
+                <p>2. Refunds will not be issued within 2 days of the event (after October 11th, 2023).</p>
+                <p>3. Tickets are transferable to another person if you cannot attend.</p>
+                <p>4. The event organizers reserve the right to refuse entry.</p>
+                <p>5. By attending, you consent to being photographed/filmed for promotional purposes.</p>
+                <p>6. No alcohol or drugs are permitted at the event.</p>
+                <p>7. The event organizers are not liable for lost or stolen property.</p>
+                <p>8. Event details are subject to change with notice to ticket holders.</p>
+                <p>9. The Instagram competition winner will be selected randomly on October 10th, 2023.</p>
+                <p>10. Artist referral bonuses are subject to the event reaching profitability.</p>
+                <p>11. All tickets are processed through Webtickets.co.za and subject to their terms of service.</p>
+            </div>
+            <button class="btn" id="close-terms">I Understand</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password functionality
+            const passwordScreen = document.getElementById('password-screen');
+            const landingPage = document.getElementById('landing-page');
+            
+            document.getElementById('submit-password').addEventListener('click', function() {
+                const password = document.getElementById('event-password').value;
+                if (password.toLowerCase() === 'hiphop') {
+                    passwordScreen.classList.add('hidden');
+                    landingPage.classList.remove('hidden');
+                } else {
+                    alert('Incorrect password. Please try again. Hint: The password is "hiphop"');
+                }
+            });
+            
+            // Allow pressing Enter to submit password
+            document.getElementById('event-password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('submit-password').click();
+                }
+            });
+
+            // Webtickets redirect
+            document.getElementById('purchase-ticket-webtickets').addEventListener('click', function() {
+                const termsChecked = document.getElementById('agree-terms').checked;
+                
+                if (!termsChecked) {
+                    alert('Please agree to the Terms and Conditions before purchasing tickets.');
+                    return;
+                }
+                
+                // Replace with your actual Webtickets event URL
+                window.open('https://www.webtickets.co.za/event.aspx?itemid=123456789', '_blank');
+            });
+            
+            // Terms modal
+            document.getElementById('show-terms').addEventListener('click', function() {
+                document.getElementById('terms-modal').style.display = 'flex';
+            });
+            
+            document.getElementById('close-terms').addEventListener('click', function() {
+                document.getElementById('terms-modal').style.display = 'none';
+            });
+            
+            // Simple newsletter subscription (frontend only)
+            document.getElementById('subscribe-updates').addEventListener('click', function() {
+                const name = document.getElementById('update-name').value;
+                const phone = document.getElementById('update-phone').value;
+                
+                if (name && phone) {
+                    alert(`Thanks ${name}! You've been subscribed to updates. We'll contact you at ${phone}.`);
+                    document.getElementById('update-name').value = '';
+                    document.getElementById('update-phone').value = '';
+                } else {
+                    alert('Please enter both your name and phone number to subscribe.');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
